@@ -29,6 +29,10 @@ stockPrices.controller('MainCtrl', [
             $scope.data = lines;
         };
 
+        $scope.$on('fileLoaded', function(event, data){
+            console.log(data);
+        });
+
         $http.get('data/snapshot.csv').success($scope.processData);
     }
 ]);
