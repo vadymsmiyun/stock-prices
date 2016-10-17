@@ -1,0 +1,1 @@
+stockPrices.config(["$stateProvider",function(n){n.state("main",{url:"/main",views:{"mainContainer@":{controller:"MainCtrl",controllerAs:"MainCtrl"}}})}]);
