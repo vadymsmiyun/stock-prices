@@ -1,12 +1,15 @@
 {
   "name": "stock-prices",
   "version": "1.0.0",
-  "description": "",
+  "description": "test task",
   "main": "app.js",
-  "dependencies": {
-    "gulp-install": "^0.6.0"
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.10"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
