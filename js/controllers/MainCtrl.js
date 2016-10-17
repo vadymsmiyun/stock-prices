@@ -22,7 +22,6 @@ stockPrices.controller('MainCtrl', [
                             tarr.push(data[j]);
                         }
                         lines.push(tarr);
-
                     }
                 }
             }
@@ -52,8 +51,28 @@ stockPrices.controller('MainCtrl', [
                     deltaTable = [];
                 }
             }
+            $scope.applyDeltas(deltasDict);
+        };
 
-            console.log(deltasDict);
+        $scope.applyDeltas = function(deltasDict){
+            var i = 0,
+                l = deltasDict.length;
+            for (i; i < l; ++i){ // for each delta table
+                var deltaTable = deltasDict[i].deltaTable;
+                var timeout = deltasDict[i].timeout;
+                (function (deltaTable, timeout){
+                    setTimeout(function(){
+                        for (var j = 1; j < $scope.data.length; ++j){ // for each row in $scope.data
+                            for (var k = 0; k < $scope.data[j].length; ++k){ // for each cell in $scope.data row
+                                if (deltaTable[j - 1][k] != ''){ //because deltas table doesn't contain headers
+                                    $scope.data[j][k] = deltaTable[j -1][k];
+                                }
+                            }
+                        }
+                        $scope.$apply();
+                    }, timeout)
+                })(deltaTable, timeout)
+            }
         };
 
         $scope.$on('fileLoaded', function(event, data){
