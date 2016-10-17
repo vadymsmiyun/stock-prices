@@ -27,6 +27,10 @@
                     <td ng-repeat="y in x track by $index">{{ y }}</td>
                 </tr>
             </table>
+            <div class="deltas-table">
+                <input class="form-control" type="file" id="file" name="file"/>
+                <button class="btn btn-primary margin-top-10" file-upload="">Load</button>
+            </div>
         </div>
     </div>
 </div>
@@ -35,6 +39,7 @@
 <script src="js/run.js"></script>
 <script src="js/routes.js"></script>
 
+<script src="js/directives/fileUpload.js"></script>
 <script src="js/controllers/MainCtrl.js"></script>
 
 </body>
