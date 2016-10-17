@@ -1,0 +1,1 @@
+stockPrices.run(["$state","$rootScope",function(o,t){o.go("main")}]);
