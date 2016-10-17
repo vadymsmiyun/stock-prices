@@ -29,8 +29,35 @@ stockPrices.controller('MainCtrl', [
             $scope.data = lines;
         };
 
+        $scope.processDeltas = function(data){
+            // split content based on new line
+            var allTextLines = data.split(/\r\n|\n/);
+            var deltaTable = [],
+                deltasDict = [],
+                i = 0,
+                l = allTextLines.length,
+                totalTimeout = 0;
+            for (i; i < l; ++i){
+                if (allTextLines[i].indexOf(',') != -1){
+                    var row = allTextLines[i].split(',');
+                    deltaTable.push(row);
+                } else if (allTextLines[i] != ''){
+                    var timeOut = allTextLines[i];
+
+                    totalTimeout += +timeOut;
+                    deltasDict.push({
+                        timeout: totalTimeout,
+                        deltaTable: deltaTable
+                    });
+                    deltaTable = [];
+                }
+            }
+
+            console.log(deltasDict);
+        };
+
         $scope.$on('fileLoaded', function(event, data){
-            console.log(data);
+            $scope.processDeltas(data);
         });
 
         $http.get('data/snapshot.csv').success($scope.processData);

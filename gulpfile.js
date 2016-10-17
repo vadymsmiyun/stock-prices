@@ -18,7 +18,7 @@ gulp.task('minify-css', ['sass'], function() {
 
 gulp.task('compress', function (cb) {
     pump([
-            gulp.src('js/*.js'),
+            gulp.src('js/**/*.js'),
             uglify(),
             gulp.dest('min')
         ],
