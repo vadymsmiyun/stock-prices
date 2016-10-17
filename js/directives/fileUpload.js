@@ -3,9 +3,6 @@ stockPrices.directive('fileUpload', [
     function ($rootScope) {
         return {
             restrict: 'A',
-            scope: {
-                deltas: '='
-            },
             link: function (scope, element) {
                element.on('click', function(){
 
